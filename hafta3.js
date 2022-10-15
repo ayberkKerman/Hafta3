@@ -11,6 +11,11 @@ function middleware(req, res, next){
   next();
 }
 
+function middlewarePost(req, res, next){
+  console.log("Post isteği için istek gönderildi");
+  next();
+}
+
 app.use('/hello',middleware)
 
 
@@ -18,7 +23,7 @@ app.get('/hello', (req, res) => {
   res.send('Merhaba Get İsteği Attınız.');
 });
 
-app.post('/hello', (req, res) => {
+app.post('/hello',middlewarePost, (req, res) => {
     res.send('Merhaba Post İsteği Attınız.');
   });
 
